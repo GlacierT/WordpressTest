@@ -21,7 +21,7 @@
 </style>
 
 	<footer>
-		<p>Компания © TanyaT.</p>
+		<a>Компания © TanyaT.</a>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

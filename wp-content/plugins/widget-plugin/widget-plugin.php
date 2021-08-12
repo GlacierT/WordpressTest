@@ -22,7 +22,21 @@ class Post_Widget extends WP_Widget {
 		$args = array(
     		'post_type'      => 'painting',
     		'posts_per_page' => 10,
-        );$loop = new WP_Query($args);
+		);$loop = new WP_Query($args);
+		?>
+		<script>
+			function randomize() {
+			var spanElements = document.getElementsByTagName("p");
+			for (var i = 0; i < spanElements.length; i++) {
+				spanElements[i].style.color = randomColors();
+			}
+			}
+			function randomColors() {
+			return '#' + Math.floor(Math.random() * 16777215).toString(16);
+			}
+		</script>
+		<button onclick="randomize()">Change title color</button>
+		<?php
 		while ( $loop->have_posts() ) {
 			$loop->the_post();
 		?>
@@ -35,9 +49,9 @@ class Post_Widget extends WP_Widget {
 			}
 		</style>
 		<div class="card">
-			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-			<p><?php echo get_the_date(__('j F Y в H:i')); ?></p>
+			<h2><p href="<?php the_permalink(); ?>"><?php the_title(); ?></p></h2>
+			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a><br/>
+			<a><?php echo get_the_date(__('j F Y в H:i')); ?></a>
 		</div>
 		<?php
 		}
